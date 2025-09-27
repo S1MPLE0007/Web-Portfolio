@@ -26,12 +26,19 @@ html{
 body{
     background: var(--bg-color);
     color: var(--text-color);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* header, main, footer */
+    /* overflow: hidden;  */
 }
 
 section{
-    min-height: 100vh;
+    min-height: 0; /* Allow shrinking */
+    height: 100vh; /* Each section fills viewport */
+    overflow: auto; 
     padding: 10rem 9% 2rem;
 }
+
 
 .header{
     position: fixed;
@@ -247,11 +254,15 @@ span{
 .services-container .services-box{
     flex: 1 1 30rem;
     background: var(--snd-bf-color);
-    padding: 3rem 2rem 4rem;
+    padding: 3rem 3rem 3rem;
     border-radius: 2rem;
     text-align: center;
     border: .2rem solid var(--bg-color);
     transition: .5s ease;
+    min-height: 38rem; 
+    display: flex;      
+    flex-direction: column;
+    justify-content: center;
 }
 
 .services-container .services-box:hover{
@@ -364,15 +375,21 @@ span{
     
 }
 
+.contact {
+    height: calc(100vh - 8rem); 
+    padding: 2rem 3% 2rem;      
+    overflow: auto;             
+}
+
 .contact h2{
-    margin-top: 7rem;
+    margin-top: 5.5rem;
     text-align: center;
     font-size: 5rem;
 }
 
 .contact form{
-    max-width: 70rem;
-    margin: 1rem auto;
+    max-width: 50rem;
+    margin: 5rem auto;
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -414,7 +431,7 @@ span{
     flex-wrap: wrap;
     padding: 2rem 5%;
     background: var(--snd-bf-color);
-    /* margin: -5rem; */
+    margin-top: auto;
 }
 
 .footer-text{
@@ -467,7 +484,7 @@ span{
     }
 
     .contact{
-        min-height: auto;
+        min-height: initial;
     }
 
     .footer{

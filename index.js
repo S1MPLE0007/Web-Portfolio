@@ -8,22 +8,24 @@ menuIcon.onclick = () => {
 }
 
 
-let sections = document.querySelector('section');
-let navLinks = document.querySelector('header nav a');
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('header nav a');
 
 window.onscroll = () => {
     sections.forEach(sec => {
         let top = window.scrollY;
-        let offset = sec.offsetTop -150;
+        let offset = sec.offsetTop - 150;
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
-        if(top >= offset && offset + height){
-            navLinks.forEach.apply(links => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active')
+        if (top >= offset && top < offset + height) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(id)) {
+                    link.classList.add('active');
+                }
             });
-        };
+        }
     });
 
     let header = document.querySelector('header');
@@ -46,7 +48,7 @@ ScrollReveal().reveal('.home-contact p , .about-content', {origin:'right'});
 
 
 const typed = new Typed('.multiple-text', {
-    strings: ['Aspiring Frontend Web Developer', 'Aspiring Web Designer'],
+    strings: ['Aspiring Software Engineer', 'Aspiring Full Stack Web Developer'],
     typeSpeed: 80,
     backSpeed: 70,
     backDelay: 1000,
